@@ -11,8 +11,18 @@
 .el-aside {
   background-color: #fff;
   color: #333;
-  text-align: center;
   line-height: 200px;
+  transition: width 0.28s;
+  .el-menu{
+    height: 100%;
+  }
+  .el-menu--collapse{
+    height: 100%;
+  }
+  .el-menu-vertical-box:not(.el-menu--collapse) {
+    width: 100%;
+    min-height: 400px;
+  }
 }
 
 .el-main {
@@ -23,7 +33,6 @@
 }
 
  .el-container {
-  margin-top: 4px;
   height: 100%;
 }
 
