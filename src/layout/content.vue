@@ -1,71 +1,108 @@
 <template>
-  <el-container class="main-container" :style="flexibleObj.mainStyle">
-    <el-header>
-      <el-row>
-        <el-col :span="24">
-          <div class="header-left">
-            <div class="flexible" @click="collapse">
-              <i class="el-icon-s-fold"></i>
-            </div>
-          </div>
-          <div class="header-right">
-            <div class="right-user">
-              <div class="user-info">
-                <div class="info-name">握不住的流沙</div>
-                <div class="info-other">
-                  <i class="el-icon-edit"></i>
-                  <i class="el-icon-share"></i>
-                  <i class="el-icon-delete"></i>
-                </div>
-              </div>
-              <div class="user-avatar">
-                <el-avatar
-                  src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-                ></el-avatar>
-              </div>
-            </div>
-          </div>
-        </el-col>
-      </el-row>
-    </el-header>
+  <el-container
+    class="main-container"
+    :style="flexibleObj.mainStyle"
+    direction="vertical"
+  >
+    <Header></Header>
     <el-container>
-      <el-main>Main </el-main>
+      <el-main>
+        <div class="page-tabs">
+          <div class="left-page">
+            <i class="el-icon-d-arrow-left"></i>
+          </div>
+          <div class="right-page">
+            <i class="el-icon-d-arrow-right"></i>
+          </div>
+          <div class="tabs-box">
+            <div class="page-item">
+              <span class="title">主页1</span>
+              <i class="el-icon-circle-close"></i>
+            </div>
+            <div class="page-item active">
+              <span class="title">主页1</span>
+              <i class="el-icon-circle-close"></i>
+            </div>
+          </div>
+        </div>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
-
+import { mapState } from "vuex";
+import Header from "./header";
 export default {
-  name: "Content",
+  components: { Header },
   computed: {
     ...mapState({
       flexibleObj: (state) => state.app.flexibleObj,
     }),
   },
-  methods: {
-    ...mapActions({
-      setFlexible: "app/setFlexible",
-    }),
-    collapse() {
-      if (!this.flexibleObj.isCollapse) {
-        this.setFlexible({
-          isCollapse: true,
-          mainStyle: {
-            marginLeft: "65px",
-          },
-          elAside: "100%",
-        });
-      } else {
-        this.setFlexible({
-          isCollapse: false,
-          mainStyle: {
-            marginLeft: "195px",
-          },
-          elAside: "194px",
-        });
-      }
-    },
-  },
+  methods: {},
 };
 </script>
+<style scoped lang="scss">
+.page-tabs {
+  border-top: 1px solid #f6f6f6;
+  border-bottom: 1px solid #f6f6f6;
+  background-color: #fff;
+  div {
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+  }
+  .left-page,
+  .right-page {
+    padding: 4px 10px;
+    &:hover {
+      background-color: #f6f6f6;
+    }
+  }
+  .left-page {
+    float: left;
+    border-right: 1px solid #f6f6f6;
+  }
+  .right-page {
+    float: right;
+    border-left: 1px solid #f6f6f6;
+  }
+  .page-item {
+    border-right: 1px solid #f6f6f6;
+    padding: 4px 10px;
+    position: relative;
+    .title {
+      margin-right: 10px;
+    }
+    i {
+      &:hover {
+        color: #f00;
+      }
+    }
+    &:hover {
+      background-color: #f6f6f6;
+      &::after {
+        width: 100%;
+      }
+    }
+    &.active {
+      background-color: #f6f6f6;
+      &::after {
+        display: block;
+        width: 100%;
+      }
+    }
+    &::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background-color: #243546;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.3s;
+    }
+  }
+}
+</style>
