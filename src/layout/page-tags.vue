@@ -68,9 +68,6 @@ export default {
   background-color: #fff;
   width: 100%;
   height: 50px;
-  position: absolute;
-  top: 0px;
-  left: 0;
   white-space: nowrap;
   padding: 0 35px 0 35px;
   overflow: hidden;

@@ -8,6 +8,10 @@
     <el-container>
       <el-main>
         <PageTags />
+        <!-- 内容区域 -->
+        <div class="page-body">
+          <router-view />
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -22,7 +26,10 @@ export default {
   computed: {
     ...mapState({
       flexibleObj: (state) => state.app.flexibleObj,
-    }),
+    })
+  },
+  created(){
+    
   },
   methods: {},
 };

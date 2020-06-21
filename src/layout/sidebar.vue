@@ -11,9 +11,11 @@
         @close="handleClose"
         :collapse="flexibleObj.isCollapse"
       >
-        <el-menu-item index="1">
+      <SideBarItem :routers="routers" />
+       
+        <!-- <el-menu-item index="1">
           <i class="el-icon-menu"></i>
-          <span slot="title">首页</span>
+          <span slot="title">首页 {{item.name}}</span>
         </el-menu-item>
 
         <el-submenu index="2">
@@ -33,23 +35,29 @@
         <el-menu-item index="4">
           <i class="el-icon-setting"></i>
           <span slot="title">导航四</span>
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
     </el-aside>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
+import SideBarItem from './siderbar-item'
 export default {
   name: "Sidebar",
-  computed:{
+  components:{SideBarItem},
+  computed: {
     ...mapState({
-      flexibleObj: state=>state.app.flexibleObj
-    })
-  },
-  data: () => ({
+      flexibleObj: (state) => state.app.flexibleObj,
+    }),
+    routers() {
+      return this.$router.options.routes;
+    },
 
-  }),
+  },
+  data: () => ({}),
+  created() {
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -57,7 +65,6 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-
   },
 };
 </script>
