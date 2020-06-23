@@ -40,3 +40,27 @@ export default {
   }
 };
 </script>
+<style scoped lang="scss">
+/deep/ .el-submenu {
+  overflow: hidden;
+  & > .el-submenu__title {
+    .el-submenu__icon-arrow {
+      display: none;
+    }
+  }
+}
+
+.el-menu--collapse {
+  .el-submenu {
+    & > .el-submenu__title {
+      & > span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+    }
+  }
+}
+</style>
