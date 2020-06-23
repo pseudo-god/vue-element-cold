@@ -1,18 +1,18 @@
 <template>
   <div class="app-content">
-    <Sidebar/>
-    <Content/>
+    <Sidebar />
+    <Content />
   </div>
 </template>
 
 <script>
-import Content from "./content";
-import Sidebar from "./sidebar";
+import Content from './content';
+import Sidebar from './sidebar';
 
 export default {
   components: { Content, Sidebar },
   data: () => ({}),
-  methods: {},
+  methods: {}
 };
 </script>
 

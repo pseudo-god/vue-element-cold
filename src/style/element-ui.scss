@@ -1,4 +1,4 @@
-.el-header{
+.el-header {
   background-color: #fff;
   line-height: 60px;
 }
@@ -13,10 +13,10 @@
   color: #333;
   line-height: 200px;
   transition: width 0.28s;
-  .el-menu{
+  .el-menu {
     height: 100%;
   }
-  .el-menu--collapse{
+  .el-menu--collapse {
     height: 100%;
   }
   .el-menu-vertical-box:not(.el-menu--collapse) {
@@ -32,7 +32,7 @@
   position: relative;
 }
 
- .el-container {
+.el-container {
   height: 100%;
 }
 

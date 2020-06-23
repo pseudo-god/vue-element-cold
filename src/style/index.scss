@@ -1,12 +1,11 @@
-@import "./element-ui.scss";
+@import './element-ui.scss';
 
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
-    Microsoft YaHei, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
   min-width: 1200px;
   background-color: #eceef3;
   margin: 0;
@@ -56,7 +55,7 @@ div:focus {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: " ";
+    content: ' ';
     clear: both;
     height: 0;
   }
@@ -68,7 +67,7 @@ div:focus {
     padding: 0 15px;
     cursor: pointer;
     margin-left: -20px;
-    &:hover{
+    &:hover {
       background-color: #e9eef2;
     }
     i {
@@ -104,7 +103,7 @@ div:focus {
     }
     .user-avatar {
       cursor: pointer;
-      .el-avatar{
+      .el-avatar {
       }
     }
   }
@@ -131,11 +130,11 @@ div:focus {
     text-align: center;
     background-color: #fff;
     border-bottom: 1px solid #e9eef2;
-    img{
+    img {
       vertical-align: middle;
     }
   }
 }
 .main-container {
-  transition: all .28s;
+  transition: all 0.28s;
 }

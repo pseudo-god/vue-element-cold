@@ -1,6 +1,6 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Layout from "@/layout";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Layout from '@/layout';
 
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -11,36 +11,36 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Layout,
-    meta: { title: "首页", icon: "menu", affix: true },
+    meta: { title: '首页', icon: 'menu', affix: true }
   },
   {
-    path: "/component",
-    name: "Component",
+    path: '/component',
+    name: 'Component',
     component: Layout,
-    meta: { title: "组件", icon: "monitor", affix: true },
+    meta: { title: '组件', icon: 'monitor', affix: true },
     children: [
       {
-        path: "table",
-        name: "Table",
-        component: () => import("@/views/table"),
-        meta: { title: "表格", icon: "monitor", affix: true },
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table'),
+        meta: { title: '表格', icon: 'monitor', affix: true }
       },
       {
-        path: "tree",
-        name: "tree",
-        component: () => import("@/views/tree"),
-        meta: { title: "树", icon: "monitor", affix: true },
-      },
-    ],
+        path: 'tree',
+        name: 'tree',
+        component: () => import('@/views/tree'),
+        meta: { title: '树', icon: 'monitor', affix: true }
+      }
+    ]
   },
   {
-    path: "/tab",
-    name: "tab",
+    path: '/tab',
+    name: 'tab',
     component: Layout,
-    meta: { title: "TAB", icon: "monitor", affix: true },
+    meta: { title: 'TAB', icon: 'monitor', affix: true }
     // children:[
     //   {
     //     path: "tab1",
@@ -49,7 +49,7 @@ const routes = [
     //     meta: { title: "TAB11", icon: "monitor", affix: true },
     //   }
     // ]
-  },
+  }
   // {
   //   path: "/tab",
   //   name: "tab",
@@ -82,7 +82,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes,
+  routes
 });
 
 export default router;

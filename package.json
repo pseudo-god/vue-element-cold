@@ -5,7 +5,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "prettier": "prettier --write .",
+    "lint": "eslint --ext .js,.vue src --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -25,6 +38,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

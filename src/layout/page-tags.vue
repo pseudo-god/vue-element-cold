@@ -18,47 +18,39 @@
 </template>
 <script>
 export default {
-  name: "PageTags",
+  name: 'PageTags',
   data: () => ({
-    navOffset: 0,
+    navOffset: 0
   }),
   computed: {
     navStyle() {
       return {
-        transform: `translateX(-${this.navOffset}px)`,
+        transform: `translateX(-${this.navOffset}px)`
       };
-    },
+    }
   },
   methods: {
     handleTabScroll(direction) {
-
       let tagsBoxWidth = this.$refs.tagsBox.offsetWidth;
       let tagsPageBoxWidth = this.$refs.tagsPageBox.offsetWidth;
       const currentOffset = this.navOffset;
-      console.log("handleTabScroll -> tagsPageBoxWidth", tagsBoxWidth);
-      console.log("handleTabScroll -> tagsBoxWidth", tagsPageBoxWidth);
-      console.log("handleTabScroll -> currentOffset", currentOffset);
+      console.log('handleTabScroll -> tagsPageBoxWidth', tagsBoxWidth);
+      console.log('handleTabScroll -> tagsBoxWidth', tagsPageBoxWidth);
+      console.log('handleTabScroll -> currentOffset', currentOffset);
 
-      if (direction === "left") {
-        let newOffset =
-          currentOffset > tagsPageBoxWidth
-            ? currentOffset - tagsPageBoxWidth
-            : 0;
-        
-   
+      if (direction === 'left') {
+        let newOffset = currentOffset > tagsPageBoxWidth ? currentOffset - tagsPageBoxWidth : 0;
+
         this.navOffset = newOffset;
       } else {
         if (tagsBoxWidth - currentOffset <= tagsPageBoxWidth) return;
 
-        let newOffset =
-          tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2
-            ? currentOffset + tagsPageBoxWidth
-            : tagsBoxWidth - tagsPageBoxWidth;
+        let newOffset = tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2 ? currentOffset + tagsPageBoxWidth : tagsBoxWidth - tagsPageBoxWidth;
 
         this.navOffset = newOffset;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -126,7 +118,7 @@ export default {
         }
       }
       &::after {
-        content: "";
+        content: '';
         width: 0;
         height: 2px;
         background-color: #243546;

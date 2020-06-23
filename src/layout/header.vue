@@ -18,9 +18,7 @@
               </div>
             </div>
             <div class="user-avatar">
-              <el-avatar
-                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-              ></el-avatar>
+              <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
             </div>
           </div>
         </div>
@@ -29,38 +27,38 @@
   </el-header>
 </template>
 <script>
-import { mapState,mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: "Header",
-    computed: {
+  name: 'Header',
+  computed: {
     ...mapState({
-      flexibleObj: (state) => state.app.flexibleObj,
-    }),
+      flexibleObj: (state) => state.app.flexibleObj
+    })
   },
   methods: {
     ...mapActions({
-      setFlexible: "app/setFlexible",
+      setFlexible: 'app/setFlexible'
     }),
     collapse() {
       if (!this.flexibleObj.isCollapse) {
         this.setFlexible({
           isCollapse: true,
           mainStyle: {
-            marginLeft: "65px",
+            marginLeft: '65px'
           },
-          elAside: "100%",
+          elAside: '100%'
         });
       } else {
         this.setFlexible({
           isCollapse: false,
           mainStyle: {
-            marginLeft: "195px",
+            marginLeft: '195px'
           },
-          elAside: "194px",
+          elAside: '194px'
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
