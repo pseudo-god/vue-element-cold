@@ -6,6 +6,11 @@
         <span slot="title"> {{ item.meta.title }}</span>
       </el-menu-item>
 
+      <el-menu-item :index="item.children[0].path" :key="index" v-else-if="item.children.length === 1" @click="click(item)">
+        <i :class="`el-icon-${item.children[0].meta.icon}`"></i>
+        <span slot="title"> {{ item.children[0].meta.title }}</span>
+      </el-menu-item>
+
       <el-submenu :index="item.path" v-else :key="index">
         <template slot="title">
           <i :class="`el-icon-${item.meta.icon}`"></i>

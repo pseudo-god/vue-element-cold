@@ -14,7 +14,14 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Layout,
-    meta: { title: '首页', icon: 'menu', affix: true }
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/home/index'),
+        meta: { title: '主页', icon: 'menu' }
+      }
+    ]
   },
   {
     path: '/component',
@@ -38,17 +45,16 @@ const routes = [
   },
   {
     path: '/tab',
-    name: 'tab',
+    name: 'tab1',
     component: Layout,
-    meta: { title: 'TAB', icon: 'monitor', affix: true }
-    // children:[
-    //   {
-    //     path: "tab1",
-    //     name: "Tab1",
-    //     component: () => import("@/views/tree"),
-    //     meta: { title: "TAB11", icon: "monitor", affix: true },
-    //   }
-    // ]
+    children: [
+      {
+        path: 'tab1',
+        name: 'tab1',
+        component: () => import('@/views/tree'),
+        meta: { title: 'tab11', icon: 'menu' }
+      }
+    ]
   }
   // {
   //   path: "/tab",

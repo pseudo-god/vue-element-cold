@@ -83,7 +83,7 @@ export default {
   }
   .tags-page-box {
     width: 100%;
-    overflow: scroll;
+    overflow: hidden;
   }
   .tags-box {
     position: relative;
