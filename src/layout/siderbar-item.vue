@@ -1,24 +1,32 @@
 <template>
-  <el-col>
+  <el-col class="siderbar-item">
     <template v-for="(item, index) in routers">
-      <el-menu-item :index="item.path" :key="index" v-if="!item.children" @click="click(item)">
-        <i :class="`el-icon-${item.meta.icon}`"></i>
+      <el-menu-item v-if="!item.children" :key="index" :index="resolvePath(item.path)" @click="handleClick(item.path)">
+        <i :class="`el-icon-${item.meta.icon}`" />
         <span slot="title"> {{ item.meta.title }}</span>
       </el-menu-item>
 
-      <el-menu-item :index="item.children[0].path" :key="index" v-else-if="item.children.length === 1" @click="click(item)">
-        <i :class="`el-icon-${item.children[0].meta.icon}`"></i>
+      <el-menu-item
+        v-else-if="item.children.length === 1"
+        :key="index"
+        :index="resolvePath(item.children[0].path,item.path)"
+        @click="handleClick(item.children[0].path,item.path)"
+      >
+        <i :class="`el-icon-${item.children[0].meta.icon}`" />
         <span slot="title"> {{ item.children[0].meta.title }}</span>
       </el-menu-item>
 
-      <el-submenu :index="item.path" v-else :key="index">
+      <!-- 渲染子级菜单 -->
+      <el-submenu v-else :key="index" :index="resolvePath(item.path)">
         <template slot="title">
-          <i :class="`el-icon-${item.meta.icon}`"></i>
-          <span slot="title">{{ item.meta.title }}</span>
+          <i :class="`el-icon-${item.meta && item.meta.icon}`" />
+          <span slot="title">{{ item.meta && item.meta.title }}</span>
         </template>
-        <SiderbarItem :routers="item.children" :basePath="item.path"> </SiderbarItem>
+        <SiderbarItem :routers="item.children" :base-path="item.path" />
       </el-submenu>
+
     </template>
+
   </el-col>
 </template>
 
@@ -32,29 +40,37 @@ export default {
     },
     basePath: {
       type: String,
-      required: false
+      default: ''
     }
   },
-  computed: {},
+  computed: {
+
+  },
+  created() {
+    console.log(this.basePath)
+  },
+  updated() {},
   methods: {
-    click(item) {
-      console.log('click -> item', item);
-      console.log(this.basePath);
-      this.$router.push({ name: item.name });
-    }
-  }
-};
-</script>
-<style scoped lang="scss">
-/deep/ .el-submenu {
-  overflow: hidden;
-  & > .el-submenu__title {
-    .el-submenu__icon-arrow {
-      display: none;
+    handleClick(path, onePath) {
+      console.log('click -> path', path)
+      const newPath = this.resolvePath(path, onePath)
+
+      this.$router.push({ path: newPath })
+    },
+    resolvePath(path, onePath) {
+      var newPath = ''
+      if (onePath) {
+        newPath = (onePath === '/' ? '/' : onePath + '/') + path
+      } else {
+        newPath = this.basePath + '/' + path
+      }
+
+      return newPath
     }
   }
 }
-
+</script>
+<style scoped lang="scss">
 .el-menu--collapse {
   .el-submenu {
     & > .el-submenu__title {
@@ -66,6 +82,13 @@ export default {
         display: inline-block;
       }
     }
+  }
+}
+</style>
+<style lang="scss">
+.el-menu--collapse {
+  .el-submenu__icon-arrow {
+    display: none;
   }
 }
 </style>

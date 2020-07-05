@@ -1,57 +1,111 @@
 <template>
   <div class="page-tags">
     <div class="left-page" @click="handleTabScroll('left')">
-      <i class="el-icon-d-arrow-left"></i>
+      <i class="el-icon-d-arrow-left" />
     </div>
     <div class="right-page" @click="handleTabScroll('right')">
-      <i class="el-icon-d-arrow-right"></i>
+      <i class="el-icon-d-arrow-right" />
     </div>
-    <div class="tags-page-box" ref="tagsPageBox">
-      <div class="tags-box" ref="tagsBox" :style="navStyle">
-        <div class="page-item" v-for="(index, item) in 25" :key="index">
-          <span class="title">主页 - {{ item }}</span>
-          <i class="el-icon-circle-close"></i>
+    <div ref="tagsPageBox" class="tags-page-box">
+      <div ref="tagsBox" class="tags-box" :style="navStyle">
+        <div v-for="(item, index) in getTags" :key="index" :class="{ 'page-item': true, active: isActive(item) }" @click="active(item)">
+          <span class="title">{{ item.title }}</span>
+          <i v-if="item.affix" class="el-icon-circle-close" @click.stop="del(item)" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'PageTags',
   data: () => ({
     navOffset: 0
   }),
   computed: {
+    ...mapState({
+      getTags: (state) => state.tags.tags
+    }),
     navStyle() {
       return {
         transform: `translateX(-${this.navOffset}px)`
-      };
+      }
     }
   },
+  watch: {
+    $route(val) {
+      this.addTag(val)
+    }
+  },
+  created() {
+    this.initTag()
+  },
   methods: {
+    ...mapActions({
+      setTag: 'tags/setTag',
+      delTag: 'tags/delTag'
+    }),
+    initTag() {
+      const { name, meta } = this.$route
+      if (name) {
+        if (!this.isActive(name)) {
+          const tagsInfo = {
+            name,
+            meta: {
+              title: meta.title,
+              affix: meta.affix
+            }
+          }
+          this.addTag(tagsInfo)
+        }
+      }
+    },
+    addTag(val) {
+      this.setTag({
+        name: val.name,
+        title: val.meta.title,
+        affix: val.meta.affix
+      })
+    },
+    del(tag) {
+      console.log('delTag -> tag', tag)
+      this.$store.dispatch('tags/delTag', tag).then((tags) => {
+        if (tags.length) {
+          const tag = tags.slice(-1)[0]
+          this.$router.push({ name: tag.name })
+          this.isActive(tag)
+        }
+      })
+    },
+    active(item) {
+      console.log('active -> item', item)
+      if (!this.isActive(item)) {
+        this.$router.push({ name: item.name })
+      }
+    },
+    // 是否为当前选中的路由
+    isActive(tag) {
+      return tag.name === this.$route.name
+    },
     handleTabScroll(direction) {
-      let tagsBoxWidth = this.$refs.tagsBox.offsetWidth;
-      let tagsPageBoxWidth = this.$refs.tagsPageBox.offsetWidth;
-      const currentOffset = this.navOffset;
-      console.log('handleTabScroll -> tagsPageBoxWidth', tagsBoxWidth);
-      console.log('handleTabScroll -> tagsBoxWidth', tagsPageBoxWidth);
-      console.log('handleTabScroll -> currentOffset', currentOffset);
-
+      const tagsBoxWidth = this.$refs.tagsBox.offsetWidth
+      const tagsPageBoxWidth = this.$refs.tagsPageBox.offsetWidth
+      const currentOffset = this.navOffset
       if (direction === 'left') {
-        let newOffset = currentOffset > tagsPageBoxWidth ? currentOffset - tagsPageBoxWidth : 0;
+        const newOffset = currentOffset > tagsPageBoxWidth ? currentOffset - tagsPageBoxWidth : 0
 
-        this.navOffset = newOffset;
+        this.navOffset = newOffset
       } else {
-        if (tagsBoxWidth - currentOffset <= tagsPageBoxWidth) return;
+        if (tagsBoxWidth - currentOffset <= tagsPageBoxWidth) return
 
-        let newOffset = tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2 ? currentOffset + tagsPageBoxWidth : tagsBoxWidth - tagsPageBoxWidth;
+        const newOffset = tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2 ? currentOffset + tagsPageBoxWidth : tagsBoxWidth - tagsPageBoxWidth
 
-        this.navOffset = newOffset;
+        this.navOffset = newOffset
       }
     }
   }
-};
+}
 </script>
 <style scoped lang="scss">
 .page-tags {

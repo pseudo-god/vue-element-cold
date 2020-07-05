@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Content from './content';
-import Sidebar from './sidebar';
+import Content from './content'
+import Sidebar from './sidebar'
 
 export default {
   components: { Content, Sidebar },
   data: () => ({}),
   methods: {}
-};
+}
 </script>
 
 <style></style>

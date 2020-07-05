@@ -4,4 +4,4 @@ module.exports = {
   semi: true, // 是否在语句末尾打印分
   singleQuote: true, // 是否使用单引号，这里选择使用
   trailingComma: 'none'
-};
+}

@@ -1,6 +1,6 @@
 <template>
   <el-container class="main-container" :style="flexibleObj.mainStyle" direction="vertical">
-    <Header></Header>
+    <Header />
     <el-container>
       <el-main>
         <PageTags />
@@ -13,9 +13,9 @@
   </el-container>
 </template>
 <script>
-import { mapState } from 'vuex';
-import Header from './header';
-import PageTags from './page-tags';
+import { mapState } from 'vuex'
+import Header from './header'
+import PageTags from './page-tags'
 
 export default {
   components: { Header, PageTags },
@@ -26,5 +26,5 @@ export default {
   },
   created() {},
   methods: {}
-};
+}
 </script>
