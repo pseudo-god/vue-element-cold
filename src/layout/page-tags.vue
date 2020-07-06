@@ -1,23 +1,45 @@
 <template>
   <div class="page-tags">
-    <div class="left-page" @click="handleTabScroll('left')">
-      <i class="el-icon-d-arrow-left" />
+    <div
+      class="left-page"
+      @click="handleTabScroll('left')"
+    >
+      <i class="el-icon-d-arrow-left"></i>
     </div>
-    <div class="right-page" @click="handleTabScroll('right')">
-      <i class="el-icon-d-arrow-right" />
+    <div
+      class="right-page"
+      @click="handleTabScroll('right')"
+    >
+      <i class="el-icon-d-arrow-right"></i>
     </div>
-    <div ref="tagsPageBox" class="tags-page-box">
-      <div ref="tagsBox" class="tags-box" :style="navStyle">
-        <div v-for="(item, index) in getTags" :key="index" :class="{ 'page-item': true, active: isActive(item) }" @click="active(item)">
+    <div
+      ref="tagsPageBox"
+      class="tags-page-box"
+    >
+      <div
+        ref="tagsBox"
+        class="tags-box"
+        :style="navStyle"
+      >
+        <div
+          v-for="(item, index) in getTags"
+          :key="index"
+          :class="{ 'page-item': true, active: isActive(item) }"
+          @click="active(item)"
+        >
           <span class="title">{{ item.title }}</span>
-          <i v-if="item.affix" class="el-icon-circle-close" @click.stop="del(item)" />
+          <i
+            v-if="item.affix"
+            class="el-icon-circle-close"
+            @click.stop="del(item)"
+          ></i>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 export default {
   name: 'PageTags',
   data: () => ({
@@ -30,16 +52,16 @@ export default {
     navStyle() {
       return {
         transform: `translateX(-${this.navOffset}px)`
-      }
+      };
     }
   },
   watch: {
     $route(val) {
-      this.addTag(val)
+      this.addTag(val);
     }
   },
   created() {
-    this.initTag()
+    this.initTag();
   },
   methods: {
     ...mapActions({
@@ -47,7 +69,7 @@ export default {
       delTag: 'tags/delTag'
     }),
     initTag() {
-      const { name, meta } = this.$route
+      const { name, meta } = this.$route;
       if (name) {
         if (!this.isActive(name)) {
           const tagsInfo = {
@@ -56,8 +78,8 @@ export default {
               title: meta.title,
               affix: meta.affix
             }
-          }
-          this.addTag(tagsInfo)
+          };
+          this.addTag(tagsInfo);
         }
       }
     },
@@ -66,46 +88,46 @@ export default {
         name: val.name,
         title: val.meta.title,
         affix: val.meta.affix
-      })
+      });
     },
     del(tag) {
-      console.log('delTag -> tag', tag)
+      console.log('delTag -> tag', tag);
       this.$store.dispatch('tags/delTag', tag).then((tags) => {
         if (tags.length) {
-          const tag = tags.slice(-1)[0]
-          this.$router.push({ name: tag.name })
-          this.isActive(tag)
+          const tag = tags.slice(-1)[0];
+          this.$router.push({ name: tag.name });
+          this.isActive(tag);
         }
-      })
+      });
     },
     active(item) {
-      console.log('active -> item', item)
+      console.log('active -> item', item);
       if (!this.isActive(item)) {
-        this.$router.push({ name: item.name })
+        this.$router.push({ name: item.name });
       }
     },
     // 是否为当前选中的路由
     isActive(tag) {
-      return tag.name === this.$route.name
+      return tag.name === this.$route.name;
     },
     handleTabScroll(direction) {
-      const tagsBoxWidth = this.$refs.tagsBox.offsetWidth
-      const tagsPageBoxWidth = this.$refs.tagsPageBox.offsetWidth
-      const currentOffset = this.navOffset
+      const tagsBoxWidth = this.$refs.tagsBox.offsetWidth;
+      const tagsPageBoxWidth = this.$refs.tagsPageBox.offsetWidth;
+      const currentOffset = this.navOffset;
       if (direction === 'left') {
-        const newOffset = currentOffset > tagsPageBoxWidth ? currentOffset - tagsPageBoxWidth : 0
+        const newOffset = currentOffset > tagsPageBoxWidth ? currentOffset - tagsPageBoxWidth : 0;
 
-        this.navOffset = newOffset
+        this.navOffset = newOffset;
       } else {
-        if (tagsBoxWidth - currentOffset <= tagsPageBoxWidth) return
+        if (tagsBoxWidth - currentOffset <= tagsPageBoxWidth) return;
 
-        const newOffset = tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2 ? currentOffset + tagsPageBoxWidth : tagsBoxWidth - tagsPageBoxWidth
+        const newOffset = tagsBoxWidth - currentOffset > tagsPageBoxWidth * 2 ? currentOffset + tagsPageBoxWidth : tagsBoxWidth - tagsPageBoxWidth;
 
-        this.navOffset = newOffset
+        this.navOffset = newOffset;
       }
     }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .page-tags {

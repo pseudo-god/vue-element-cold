@@ -3,8 +3,11 @@
     <el-row>
       <el-col :span="24">
         <div class="header-left">
-          <div class="flexible" @click="collapse">
-            <i class="el-icon-s-fold" />
+          <div
+            class="flexible"
+            @click="collapse"
+          >
+            <i class="el-icon-s-fold"></i>
           </div>
         </div>
         <div class="header-right">
@@ -12,9 +15,9 @@
             <div class="user-info">
               <div class="info-name">握不住的流沙</div>
               <div class="info-other">
-                <i class="el-icon-edit" />
-                <i class="el-icon-share" />
-                <i class="el-icon-delete" />
+                <i class="el-icon-edit"></i>
+                <i class="el-icon-share"></i>
+                <i class="el-icon-delete"></i>
               </div>
             </div>
             <div class="user-avatar">
@@ -27,7 +30,7 @@
   </el-header>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Header',
@@ -48,7 +51,7 @@ export default {
             marginLeft: '65px'
           },
           elAside: '100%'
-        })
+        });
       } else {
         this.setFlexible({
           isCollapse: false,
@@ -56,9 +59,9 @@ export default {
             marginLeft: '195px'
           },
           elAside: '194px'
-        })
+        });
       }
     }
   }
-}
+};
 </script>

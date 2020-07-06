@@ -14,20 +14,51 @@ module.exports = {
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
-    "vue/max-attributes-per-line": [
-      2,
+    // 检测代码圈复杂度的
+    // complexity: [
+    //     'warn',
+    //     { max: 2 }
+    // ],
+    //容许使用v-for和v-if并用
+    "vue/no-use-v-if-with-v-for": [
+      "error",
       {
-        singleline: 10,
-        multiline: {
-          max: 1,
-          allowFirstLine: false,
+        allowUsingIterationVar: true,
+      },
+    ],
+    //每行属性最多不超过3
+    // "vue/max-attributes-per-line": [
+    //   3,
+    //   {
+    //     singleline: 10,
+    //     multiline: {
+    //       max: 1,
+    //       allowFirstLine: false,
+    //     },
+    //   },
+    // ],
+    "vue/html-self-closing": [
+      "error",
+      {
+        html: {
+          void: "always",
+          normal: "never",
+          component: "always",
         },
+        svg: "always",
+        math: "always",
       },
     ],
     "vue/singleline-html-element-content-newline": "off",
     "vue/multiline-html-element-content-newline": "off",
     "vue/name-property-casing": ["error", "PascalCase"],
     "vue/no-v-html": "off",
+    "vue/no-parsing-error": [
+      2,
+      {
+        "x-invalid-end-tag": false,
+      },
+    ],
     "accessor-pairs": 2,
     "arrow-spacing": [
       2,
@@ -79,7 +110,7 @@ module.exports = {
         SwitchCase: 1,
       },
     ],
-    "jsx-quotes": [2, "prefer-single"],
+    "jsx-quotes": ["error", "prefer-single"],
     "key-spacing": [
       2,
       {
@@ -221,7 +252,7 @@ module.exports = {
         allowTemplateLiterals: true,
       },
     ],
-    semi: [2, "never"],
+    semi: ["error", "always"],
     "semi-spacing": [
       2,
       {
@@ -230,7 +261,7 @@ module.exports = {
       },
     ],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "never"],
+    "space-before-function-paren": 0,
     "space-in-parens": [2, "never"],
     "space-infix-ops": 2,
     "space-unary-ops": [
@@ -263,13 +294,9 @@ module.exports = {
     yoda: [2, "never"],
     "prefer-const": 2,
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-    "object-curly-spacing": [
-      2,
-      "always",
-      {
-        objectsInObjects: false,
-      },
-    ],
+    // 'object-curly-spacing': [2, 'always', {
+    //   objectsInObjects: false
+    // }],
     "array-bracket-spacing": [2, "never"],
   },
 };
