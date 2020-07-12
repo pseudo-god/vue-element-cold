@@ -7,6 +7,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/style/index.scss'; // global css
 
+import '@/icons/index.js';
+
 Vue.use(ElementUI);
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
 

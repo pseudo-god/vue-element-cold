@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "prettier": "prettier --write .",
-    "lint": "eslint --ext .js,.vue src --fix"
+    "lint": "eslint --ext .js,.vue src --fix",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "husky": {
     "hooks": {
@@ -40,6 +41,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "svg-sprite-loader": "^5.0.0",
+    "svgo": "^1.3.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
