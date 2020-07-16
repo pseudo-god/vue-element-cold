@@ -23,7 +23,21 @@
     </el-card>
   </div>
 </template>
-
+<script>
+import {Rhome } from '@/api/home';
+export default {
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      Rhome().then(res => {
+        console.log('fetchData -> res', res);
+      });
+    }
+  }
+};
+</script>
 <style lang="scss" scoped>
 .text {
   font-size: 14px;

@@ -1,29 +1,5 @@
-# iview
+# VES
 
-## Project setup
-
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn build
-```
-
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 接口规范
+* 接口名首字母大写，使用常用单词首字母
+> C:Create  U:Update R:Retrieve  D:Delete
