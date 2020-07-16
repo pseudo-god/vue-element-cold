@@ -18,6 +18,8 @@
       >
         {{ '列表内容 ' + o }}
       </div>
+      dddd
+      <svg-icon icon-class="logo" />
     </el-card>
   </div>
 </template>

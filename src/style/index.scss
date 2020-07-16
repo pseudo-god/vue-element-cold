@@ -9,6 +9,7 @@ body {
   min-width: 1200px;
   background-color: #eceef3;
   margin: 0;
+  box-sizing: content-box;
 }
 
 label {
@@ -61,53 +62,6 @@ div:focus {
   }
 }
 
-.header-left {
-  float: left;
-  .flexible {
-    padding: 0 15px;
-    cursor: pointer;
-    margin-left: -20px;
-    &:hover {
-      background-color: #e9eef2;
-    }
-    i {
-      font-size: 20px;
-      cursor: pointer;
-    }
-  }
-}
-
-.header-right {
-  float: right;
-  .right-user {
-    display: flex;
-    justify-content: space-between;
-    .user-info {
-      margin-right: 10px;
-      margin-top: 4px;
-      .info-name,
-      .info-other {
-        font-size: 10px;
-        color: #989898;
-        line-height: 25px;
-      }
-      .info-other {
-        i {
-          margin-left: 8px;
-          cursor: pointer;
-          &:hover {
-            color: #dedefe;
-          }
-        }
-      }
-    }
-    .user-avatar {
-      cursor: pointer;
-      .el-avatar {
-      }
-    }
-  }
-}
 
 .menu-container {
   height: 100%;
@@ -119,19 +73,20 @@ div:focus {
   z-index: 1001;
   overflow: hidden;
   .el-aside {
-    height: 100%;
+    height: calc(100% - 60px);
     .el-menu {
       border-right: none;
     }
   }
 
   .logo-container {
-    line-height: 60px;
+    height: 60px;
     text-align: center;
-    background-color: #fff;
-    border-bottom: 1px solid #e9eef2;
-    img {
-      vertical-align: middle;
+    background-color: #242a3a;
+    .logo {
+      width: 60px;
+      height: 20px;
+      margin-top: 20px;
     }
   }
 }

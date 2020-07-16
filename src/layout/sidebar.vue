@@ -1,9 +1,9 @@
 <template>
   <div class="menu-container">
     <div class="logo-container">
-      <img
-        src="../assets/svg/logo.svg"
-        alt=""
+      <svg-icon
+        icon-class="logo"
+        class-name="logo"
       />
     </div>
     <el-aside :width="flexibleObj.elAside">
@@ -11,6 +11,9 @@
         :default-active="activeMenu"
         class="el-menu-vertical-box"
         :collapse="flexibleObj.isCollapse"
+        background-color="#fff"
+        text-color="#545a6d"
+        active-text-color="#545a6d"
         @open="handleOpen"
         @close="handleClose"
       >

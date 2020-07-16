@@ -3,7 +3,7 @@ const state = {
     isCollapse: false,
     elAside: '194px',
     mainStyle: {
-      marginLeft: '195px'
+      marginLeft: '194px'
     }
   }
 };

@@ -1,6 +1,5 @@
 .el-header {
   background-color: #fff;
-  line-height: 60px;
 }
 .el-footer {
   background-color: #b3c0d1;
@@ -24,23 +23,25 @@
     min-height: 400px;
   }
 }
+.app-content {
+  .el-main {
+    background-color: #e9eef3;
+    color: #333;
+    padding: 0;
+    position: relative;
+  }
 
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  padding: 0;
-  position: relative;
-}
+  .el-container {
+    height: 100%;
+    margin-left: 1px;
+  }
 
-.el-container {
-  height: 100%;
-}
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
 
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
 }

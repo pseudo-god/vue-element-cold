@@ -172,10 +172,8 @@ export default {
       border-right: 1px solid #f6f6f6;
       padding: 4px 10px;
       position: relative;
-      .title {
-        margin-right: 10px;
-      }
       i {
+        margin-left: 10px;
         &:hover {
           color: #f00;
         }

@@ -4,8 +4,8 @@ import store from './store';
 import router from './router';
 
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import '@/style/index.scss'; // global css
+import '@/style/element-variables.scss';
 
 import '@/icons/index.js';
 
