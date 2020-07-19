@@ -1,15 +1,9 @@
 <template>
-  <el-header class="ves-header-container">
+  <el-header class="ves-header-container fixed" height="auto">
     <el-row>
-      <el-col
-        :span="24"
-        class="header-box"
-      >
+      <el-col :span="24" class="header-box">
         <div class="header-left">
-          <div
-            class="flexible"
-            @click="collapse"
-          >
+          <div class="flexible" @click="collapse">
             <i class="el-icon-s-fold"></i>
           </div>
         </div>
@@ -22,42 +16,32 @@
               <div class="info-name">握不住的流沙</div>
             </div>
             <div class="user-avatar">
-              <el-dropdown
-                trigger="click"
-                @command="handleCommand"
-              >
+              <el-dropdown trigger="click" @command="handleCommand">
                 <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item
-                    icon="el-icon-user"
-                    command="userInfo"
-                  >个人资料</el-dropdown-item>
-                  <el-dropdown-item
-                    icon="el-icon-lock"
-                    command="lock"
-                  >锁屏</el-dropdown-item>
-                  <el-dropdown-item
-                    icon="el-icon-setting"
-                    command="setting"
-                  >设置</el-dropdown-item>
-                  <el-dropdown-item
-                    divided
-                    icon="el-icon-switch-button"
-                  >登出</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-user" command="userInfo">个人资料</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-lock" command="lock">锁屏</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-setting" command="setting">设置</el-dropdown-item>
+                  <el-dropdown-item divided icon="el-icon-switch-button">登出</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
           </div>
         </div>
       </el-col>
+      <el-col :span="24">
+        <PageTags />
+      </el-col>
     </el-row>
   </el-header>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import PageTags from './page-tags';
 
 export default {
   name: 'Header',
+  components: { PageTags },
   computed: {
     ...mapState({
       flexibleObj: (state) => state.app.flexibleObj
@@ -95,12 +79,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ves-header-container {
-  background-color: #242a3a;
-  color:#fff;
+  background-color: $ves-navigateTopBgColor;
+  color: #fff;
+  padding: 0;
+  &.fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   .header-box {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 20px;
   }
   .header-left {
     line-height: 60px;
@@ -110,8 +101,9 @@ export default {
       margin-left: -20px;
       width: 35px;
       text-align: center;
+      color: #000;
       &:hover {
-        background-color: #575d6b;
+        opacity: 0.5;
       }
       i {
         font-size: 20px;
@@ -153,8 +145,7 @@ export default {
       .user-avatar {
         flex: 1;
         cursor: pointer;
-        .el-avatar {
-        }
+ 
       }
     }
   }

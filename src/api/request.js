@@ -4,7 +4,7 @@ import store from '@/store';
 
 // create an axios instance
 const service = axios.create({
-  baseURL: (process.env.NODE_ENV === 'production' ? '' : process.env.VUE_APP_BASE_DOMAIN) + process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL:  process.env.VUE_APP_BASE_API,
   timeout: 10000 // request timeout
 });
 
@@ -58,6 +58,7 @@ service.interceptors.response.use(
       duration: 5 * 1000
     });
 
+    
     return Promise.reject(error.response);
   }
 );

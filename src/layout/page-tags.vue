@@ -1,4 +1,5 @@
 <template>
+
   <div class="page-tags">
     <div
       class="left-page"
@@ -138,13 +139,13 @@ export default {
   height: 50px;
   white-space: nowrap;
   padding: 0 35px 0 35px;
-  overflow: hidden;
   .left-page,
   .right-page {
     padding: 4px 10px;
     position: absolute;
     cursor: pointer;
     line-height: 40px;
+    color: #000;
     &:hover {
       background-color: #f6f6f6;
     }
@@ -172,6 +173,7 @@ export default {
       border-right: 1px solid #f6f6f6;
       padding: 4px 10px;
       position: relative;
+      color: #000;
       i {
         margin-left: 10px;
         &:hover {

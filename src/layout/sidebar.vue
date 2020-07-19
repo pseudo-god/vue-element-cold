@@ -11,9 +11,6 @@
         :default-active="activeMenu"
         class="el-menu-vertical-box"
         :collapse="flexibleObj.isCollapse"
-        background-color="#fff"
-        text-color="#545a6d"
-        active-text-color="#545a6d"
         @open="handleOpen"
         @close="handleClose"
       >

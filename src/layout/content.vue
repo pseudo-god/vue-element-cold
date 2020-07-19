@@ -7,7 +7,6 @@
     <Header />
     <el-container>
       <el-main>
-        <PageTags />
         <!-- 内容区域 -->
         <div class="page-body">
           <router-view />
@@ -19,10 +18,9 @@
 <script>
 import { mapState } from 'vuex';
 import Header from './header';
-import PageTags from './page-tags';
 
 export default {
-  components: { Header, PageTags },
+  components: { Header },
   computed: {
     ...mapState({
       flexibleObj: (state) => state.app.flexibleObj

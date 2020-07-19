@@ -8,12 +8,27 @@
 }
 
 .el-aside {
-  background-color: #fff;
   color: #333;
   line-height: 200px;
   transition: width 0.28s;
+  height: calc(100% - 60px);
+
   .el-menu {
+    border-right: none;
     height: 100%;
+    background-color: $ves-navigateBgColor;
+    color: $ves-navigateBgHoverTextColor;
+    .el-submenu__title,
+    .el-menu-item {
+      color: $ves-navigateTextColor;
+      &:hover,&:focus{
+        background-color: $ves-navigateBgHoverColor;
+        color: $ves-navigateBgHoverTextColor;
+      }
+      i {
+        color: $ves-navigateTextColor;
+      }
+    }
   }
   .el-menu--collapse {
     height: 100%;
@@ -43,5 +58,8 @@
 
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+  .page-body {
+    padding: 10px;
   }
 }

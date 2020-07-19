@@ -1,6 +1,5 @@
 import request from '../request';
 
-// 	域列表
 export function Rhome(params) {
   return request({
     url: `/home`,
@@ -8,3 +7,14 @@ export function Rhome(params) {
     params
   });
 }
+
+//获取首页数据
+export function Rstatistics(params) {
+  return request({
+    url: `/home/statistics`,
+    method: 'get',
+    params
+  });
+}
+
+
