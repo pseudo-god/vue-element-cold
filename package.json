@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "prettier": "prettier --write .",
     "lint": "eslint --ext .js,.vue src --fix",
-    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
+    "iconFontSvg":"iconFontSvg"
   },
   "husky": {
     "hooks": {
@@ -26,6 +27,7 @@
     "core-js": "^3.6.5",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
+    "iconfont-to-svg": "^1.0.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "v-charts": "^1.19.0",
@@ -61,6 +63,10 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "iconFont": {
+    "address": "/t/font_1939150_29j57hj6pdk.js",
+    "savePath": "./src/icons/svg"
   },
   "browserslist": [
     "> 1%",
