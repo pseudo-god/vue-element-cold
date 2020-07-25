@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-let proxy =  {
+let proxy = {
   "/api": {
     //要访问的跨域的域名
     target: process.env.VUE_APP_BASE_DOMAIN,
@@ -17,7 +17,7 @@ let proxy =  {
       "^/api": "",
     },
   },
-}
+};
 module.exports = {
   lintOnSave: process.env.NODE_ENV === "development",
   // 一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例
@@ -26,18 +26,22 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      sass:{
-        prependData: ` @import "@//style/variable.scss";`
-      }
-    }
+      sass: {
+        prependData: ` @import "@//style/variable.scss";`,
+      },
+    },
   },
   configureWebpack: {
     resolve: {
       alias: {
-        '@': resolve('src'),
-        '#': resolve('src/components')
-      }
-    }
+        "@": resolve("src"),
+        "#": resolve("src/components"),
+      },
+    },
+    // resolveLoader: {
+    //   // 因为 html-loader 是开源 npm 包，所以这里要添加 'node_modules' 目录
+    //   // modules: [path.join(__dirname, "./src/loaders"), "node_modules"],
+    // },
   },
   // 允许对内部的 webpack 配置进行更细粒度的修改
   chainWebpack: (config) => {
@@ -53,6 +57,6 @@ module.exports = {
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({ symbolId: "icon-[name]" })
-      .end();
-  },
+      .end()
+  }
 };
